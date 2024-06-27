@@ -17,6 +17,8 @@
       fbq('init', '1576500742923668');
       fbq('track', 'PageView');
       fbq('track', 'ViewContent');
+      fbq('track', 'AddToCart', {content_name: 'Zomato Item'});
+      fbq('track', 'InitiateCheckout', {content_name: 'Zomato Item'});
       fbq('track', 'CustomEvent', {event: 'ViewZomatoPage'});
     </script>
     <noscript><img height="1" width="1" style="display:none"
@@ -27,9 +29,28 @@
 <body>
     <p>Redirecting you to our Zomato page...</p>
     <script>
+      // Example: Tracking Add to Cart action
+      function trackAddToCart() {
+        fbq('track', 'AddToCart', {
+          content_name: 'Zomato Item'
+        });
+      }
+
+      // Example: Tracking Initiate Checkout action
+      function trackInitiateCheckout() {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Zomato Item'
+        });
+      }
+
+      // Simulating user actions before redirecting
+      trackAddToCart();
+      trackInitiateCheckout();
+
+      // Redirect to Zomato after 1 second
       setTimeout(function() {
-        window.location.href = "https://www.zomato.com/your-restaurant?ref=facebook_ad";
-      }, 1000); // Redirects after 1 second
+        window.location.href = "https://zomato.onelink.me/xqzv/p0e4fl45?ref=facebook_ad";
+      }, 1000);
     </script>
 </body>
 </html>
